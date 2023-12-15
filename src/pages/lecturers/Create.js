@@ -1,26 +1,10 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { Dropdown } from "semantic-ui-react";
 
 export function Create({ authenticated }) {
   const Navigate = useNavigate();
   let token = localStorage.getItem("token");
-
-//   const [courses, setCourses] = useState([]);
-
-//   useEffect(() => {
-//     axios
-//       .get(`https://college-api.vercel.app/api/courses`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       })
-//       .then((response) => {
-//         setCourses(response.data.data);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   }, [token]);
 
   const [form, setForm] = useState({
     name: "",
@@ -29,26 +13,13 @@ export function Create({ authenticated }) {
     email: "",
   });
 
-//   const [enrolments, setEnrolments] = useState({
-//     date: "",
-//     time: "",
-//     status: "assigned",
-//     course_id: "",
-//     lecturer_id: "",
-//   });
 
   const [errors, setErrors] = useState({
     // LECTURER ERRORS
     name: "",
     address: "",
     phone: "",
-    email: "",
-    // ENROLMENT ERRORS
-    date: "",
-    time: "",
-    status: "",
-    course_id: "",
-    lecturer_id: "",
+    email: ""
   });
 
   const errorStyle = {
@@ -99,7 +70,7 @@ export function Create({ authenticated }) {
           },
         })
         .then(response => {
-            Navigate('lecturers');
+            Navigate('/lecturers');
         })
         .catch((error) => {
           console.error(error);
